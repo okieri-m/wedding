@@ -1,0 +1,113 @@
+@use 'setting' as s;
+
+/* 余白（マージン） */
+.u-mt-4 { margin-top: 4px; }
+.u-mt-8 { margin-top: 8px; }
+.u-mt-16 { margin-top: 16px; }
+.u-mt-24 { margin-top: 24px; }
+
+.u-mb-4 { margin-bottom: 4px; }
+.u-mb-8 { margin-bottom: 8px; }
+.u-mb-16 { margin-bottom: 16px; }
+.u-mb-24 { margin-bottom: 24px; }
+
+.u-ml-4 { margin-left: 4px; }
+.u-ml-8 { margin-left: 8px; }
+.u-ml-16 { margin-left: 16px; }
+.u-ml-24 { margin-left: 24px; }
+
+.u-mr-4 { margin-right: 4px; }
+.u-mr-8 { margin-right: 8px; }
+.u-mr-16 { margin-right: 16px; }
+.u-mr-24 { margin-right: 24px; }
+
+/* 余白（パディング） */
+.u-pt-4 { padding-top: 4px; }
+.u-pt-8 { padding-top: 8px; }
+.u-pt-16 { padding-top: 16px; }
+.u-pt-24 { padding-top: 24px; }
+
+.u-pb-4 { padding-bottom: 4px; }
+.u-pb-8 { padding-bottom: 8px; }
+.u-pb-16 { padding-bottom: 16px; }
+.u-pb-24 { padding-bottom: 24px; }
+
+.u-pl-4 { padding-left: 4px; }
+.u-pl-8 { padding-left: 8px; }
+.u-pl-16 { padding-left: 16px; }
+.u-pl-24 { padding-left: 24px; }
+
+.u-pr-4 { padding-right: 4px; }
+.u-pr-8 { padding-right: 8px; }
+.u-pr-16 { padding-right: 16px; }
+.u-pr-24 { padding-right: 24px; }
+
+/* テキスト関連 */
+.u-text-center { text-align: center; }
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+.u-text-bold { font-weight: bold; }
+.u-text-small { font-size: 12px; }
+
+/* 表示（display）関連 */
+.u-d-block { display: block; }
+.u-d-inline-block { display: inline-block; }
+.u-d-flex { display: flex; }
+.u-d-none { display: none; }
+.u-xs--show{
+    display: none;
+    @include s.mq(xs){
+        display: block;
+    }
+}
+
+
+/* 位置（position）関連 */
+.u-pos-relative { position: relative; }
+.u-pos-absolute { position: absolute; }
+.u-pos-fixed { position: fixed; }
+
+// ボタン
+.c-button{
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+/* カラー */
+.bg--gray{
+    background-color: s.$colorBgGray;
+}
+.title__gold{
+    color: s.$colorGold;
+}
+
+// セクションタイトル
+.sec__titleWrapper{
+    color: s.$colorGold;
+    line-height: 1.2;
+}
+.sec_titleEn{
+    font-size: s.rem(36);
+    font-family: s.$pinyonScript;
+}
+.sec_titleJp{
+    font-family: s.$sans;
+}
+
+body{
+    font-family: s.$zenOldMincho;
+    color: s.$colorBlack;
+}
+
+.u-wrapper{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: auto;
+}
+
+.c-wrapper--width{
+    max-width: 1000px;
+}
