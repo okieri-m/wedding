@@ -1,0 +1,50 @@
+@use 'setting' as s;
+@use 'common' as c;
+
+
+.header{
+    position: fixed;
+    width: 200px;
+    background-color: s.$colorWhite;
+    height: 100vh;
+}
+.header__wrapper{
+    padding: 40px 16px;
+}
+
+.header__logo{
+    line-height: 1.5;
+    letter-spacing: 0.08rem;
+    border-bottom: 1px solid s.$colorGold;
+    padding-bottom: 24px;
+    font-size: s.rem(20);
+}
+
+.header__navItem{
+    padding-bottom: 24px;
+    &:first-child{
+        padding-top: 24px;
+    }
+}
+.header__navLink{
+    font-size: s.rem(16);
+}
+.header__cta{
+    background-color: s.$colorGold;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    .header__navLink{
+        color: s.$colorWhite;
+    }
+}
+
+.header__snsList{
+    justify-content: center;
+    gap: 24px;
+}
+.header__snsLink{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}

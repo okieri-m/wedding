@@ -1,0 +1,185 @@
+@use 'setting' as s;
+@use 'common' as c;
+
+.main{
+    padding-left: 200px;
+    overflow: hidden;
+}
+
+// ファーストビュー
+.fv--wrapper{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    video{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+// イントロ
+.intro__title{
+    font-size: s.rem(24);
+    letter-spacing: 0.06rem;
+    position: relative;
+    &::before{
+        content: "";
+        background-color: s.$colorBlack;
+        width: 1px;
+        height: 50px;
+        position: absolute;
+        top: -60px;
+        left: 50%;
+    }
+}
+.intro__text{
+    margin-bottom: 40px;
+}
+
+// ピックアップ
+.p-top-pickup__list{
+    margin-top: 40px;
+}
+.p-top-pickup__item{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+// スリックのドットスタイル
+.slick-dots{
+    bottom: -50px;
+    li{
+        width: 10px;
+        button::before{
+        font-size: 10px;
+        }
+    }
+    li.slick-active button:before{
+        color: s.$colorGold;
+    }
+}
+
+// プラン
+.c-plan-tabs{
+    margin-top: 40px;
+}
+.c-plan-tabs__buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.c-plan-tabs__button{
+    min-width: 280px;
+    text-align: center;
+    display: inline-block;
+    color: s.$colorGray;
+    border-bottom: 1px solid s.$colorGray;
+    padding-bottom: 8px;
+    font-size: s.rem(18);
+}
+.c-plan-tabs__button--active{
+    color: s.$colorGold;
+    border-bottom: 1px solid s.$colorGold;
+}
+
+.c-plan-tabs__content{
+    display: none;
+    max-width: 640px;
+    margin: auto;
+    .content__title{
+    margin-top: 40px;
+    border-bottom: 1px solid s.$colorGold;
+    padding-bottom: 8px;
+    font-size: s.rem(20);
+    }
+    .content__text{
+        font-family: s.$sans;
+        margin-top: 10px;
+    }
+}
+
+.c-plan-tabs__content--active{
+    display: block;
+}
+
+.plan__cta{
+    background: s.$colorGold;
+    color: s.$colorWhite;
+    width: 380px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+// 特徴
+.p-top__featureList{
+    margin-top: 40px;
+    .p-top__featureItem:nth-child(even){
+        flex-direction: row-reverse;
+    }
+    .p-top__featureItem:last-child{
+       margin-bottom: 0;
+    }
+}
+.p-top__featureItem{
+    display: flex;
+    margin-bottom: 100px;
+}
+.featureItem__imgWrapper{
+    width: 500px;
+}
+.featureItem__contents{
+    margin-top: 130px;
+    margin-left: -80px;
+    width: 500px;
+    background: s.$colorWhite;
+    padding: 16px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 5;
+}
+.featureItem__title{
+    text-align: center;
+    font-size: s.rem(20);
+    margin-bottom: 16px;
+}
+.p-top__featureItem:nth-child(even) .featureItem__contents {
+  margin-left: auto; /* 奇数番目のmargin-leftをリセット */
+  margin-right: -80px;
+}
+
+// ギャラリー
+.gallery {
+  display: grid;
+  /* 小さいマスに分割（100%を10単位に分けて比率を表現） */
+  grid-template-columns: repeat(40, 1fr);
+  grid-template-rows: 153px 282px 153px;
+  gap: 1.5%;
+  margin-top: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- 1行目（34% / 22.5% / 22.5% / 17%） --- */
+.gallery img:nth-child(1) { grid-column: 1 / span 14; grid-row: 1; }
+.gallery img:nth-child(2) { grid-column: 15 / span 9; grid-row: 1; }
+.gallery img:nth-child(3) { grid-column: 24 / span 9; grid-row: 1; }
+.gallery img:nth-child(4) { grid-column: 33 / span 7; grid-row: 1; }
+
+/* --- 2行目（40% / 18.5% / 40%） --- */
+.gallery img:nth-child(5) { grid-column: 1 / span 16; grid-row: 2; }
+.gallery img:nth-child(6) { grid-column: 17 / span 7; grid-row: 2; }
+.gallery img:nth-child(7) { grid-column: 24 / span 16; grid-row: 2; }
+
+/* --- 3行目（25% / 55% / 18.5%） --- */
+.gallery img:nth-child(8) { grid-column: 1 / span 10; grid-row: 3; }
+.gallery img:nth-child(9) { grid-column: 11 / span 22; grid-row: 3; }
+.gallery img:nth-child(10) { grid-column: 33 / span 7; grid-row: 3; }

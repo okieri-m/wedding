@@ -1,0 +1,33 @@
+@use 'sass:math';
+
+// 色を変数登録
+$colorBlack: #333333;
+$colorWhite: #fff;
+$colorGray: #BBBBBB;
+$colorBgGray: #F6F6F6;
+$colorGold: #A88657;
+
+// フォントファミリー
+$zenOldMincho: "Zen Old Mincho", serif;
+$pinyonScript: "Pinyon Script", cursive;
+$sans: "Noto Sans JP", sans-serif;
+
+// ブレイクポイントを変数&mixin登録
+$breakpoints: (
+    "lg": "screen and (min-width: 1280px)",
+    "md": "screen and (max-width: 1000px)",
+    "sm": "screen and (max-width: 750px)",
+    "xs": "screen and (max-width: 480px)",
+) !default;
+
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+// pxからremへの変換関数
+$baseFontSize: 16;
+@function rem($pixels) {
+	@return $pixels / $baseFontSize * 1rem;
+}
