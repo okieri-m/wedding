@@ -52,8 +52,16 @@
 /* 表示（display）関連 */
 .u-d-block { display: block; }
 .u-d-inline-block { display: inline-block; }
-.u-d-flex { display: flex; }
+.u-d-flex {
+     display: flex;
+    }
 .u-d-none { display: none; }
+.u-sm--show{
+    display: none;
+    @include s.mq(sm){
+        display: block;
+    }
+}
 .u-xs--show{
     display: none;
     @include s.mq(xs){
@@ -72,6 +80,7 @@
     text-align: center;
     padding-top: 16px;
     padding-bottom: 16px;
+    font-size: s.rem(20);
 }
 
 /* カラー */
@@ -88,16 +97,20 @@
     line-height: 1.2;
 }
 .sec_titleEn{
-    font-size: s.rem(36);
+    font-size: s.rem(38);
     font-family: s.$pinyonScript;
 }
 .sec_titleJp{
     font-family: s.$sans;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 body{
     font-family: s.$zenOldMincho;
     color: s.$colorBlack;
+    margin: 0;
+    letter-spacing: 0.08rem;
 }
 
 .u-wrapper{
@@ -106,6 +119,10 @@ body{
     padding-left: 40px;
     padding-right: 40px;
     margin: auto;
+    @include s.mq(sm){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .c-wrapper--width{

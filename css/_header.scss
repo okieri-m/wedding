@@ -1,15 +1,36 @@
 @use 'setting' as s;
 @use 'common' as c;
 
+// ヘッダーのみのmixin
+@mixin spNav--W {
+    @include s.mq(sm){
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+}
 
 .header{
     position: fixed;
     width: 200px;
     background-color: s.$colorWhite;
     height: 100vh;
+    z-index: 10;
+    @include s.mq(sm){
+        width: 100%;
+        background-color: s.$colorWhite;
+        height: 80px;
+    }
 }
 .header__wrapper{
     padding: 40px 16px;
+    @include s.mq(sm){
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        height: 100%;
+    }
 }
 
 .header__logo{
@@ -18,6 +39,37 @@
     border-bottom: 1px solid s.$colorGold;
     padding-bottom: 24px;
     font-size: s.rem(20);
+    position: relative;
+    z-index: 10;
+    @include s.mq(sm){
+     border-bottom: unset;
+     padding-bottom: 0;
+     line-height: 1;
+    }
+}
+
+.header__nav{
+    @include s.mq(sm){
+        padding-top: 60px;
+        width: 100%;
+        background: s.$colorWhite;
+        position: absolute;
+        top: 60px;
+        right: -900px;
+        height: 100vh;
+        transition: all .4s;
+    }
+}
+
+.header__logo--openNav{
+    @include s.mq(sm){
+        line-height: 1.5;
+        letter-spacing: 0.08rem;
+        border-bottom: 1px solid s.$colorGold;
+        padding-bottom: 24px;
+        font-size: s.rem(20);
+        @include spNav--W;
+    }
 }
 
 .header__navItem{
@@ -25,9 +77,15 @@
     &:first-child{
         padding-top: 24px;
     }
+    @include s.mq(sm){
+        @include spNav--W;
+    }
 }
 .header__navLink{
     font-size: s.rem(16);
+    &.current{
+        color: s.$colorGold;
+    }
 }
 .header__cta{
     background-color: s.$colorGold;
@@ -47,4 +105,49 @@
     width: 40px;
     height: 40px;
     display: inline-block;
+}
+
+// はんばーがーめにゅー
+.hamburger__btn{
+    width: 35px;
+    height: 24px;
+    position: relative;
+    span{
+        position: absolute;
+        background: #333;
+        width: 100%;
+        height: 1px;
+        left: 0;
+        transition: all .4s;
+        &:nth-child(1){
+            top: 0;
+        }
+        &:nth-child(2){
+            top: 12px;
+        }
+        &:nth-child(3){
+            bottom: 0;
+        }
+        
+    }
+}
+
+
+// メニュー展開時スタイル
+.open .hamburger__btn span{
+    &:nth-child(1){
+        transform: translateY(10px) rotate(45deg);
+    }
+    &:nth-child(2){
+        opacity: 0;
+    }
+    &:nth-child(3){
+        transform: translateY(-13.5px) rotate(-45deg);
+    }
+}
+
+.open .header__nav{
+    @include s.mq(sm){
+        right: 0;
+    }
 }

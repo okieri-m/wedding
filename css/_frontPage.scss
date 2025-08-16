@@ -3,6 +3,10 @@
 
 .contents__area{
     padding-left: 200px;
+    @include s.mq(sm){
+        padding-left: 0;
+        padding-top: 80px;
+    }
 }
 .main{
     overflow: hidden;
@@ -21,6 +25,9 @@
 }
 
 // イントロ
+.intro .u-wrapper{
+    padding-bottom: 40px;
+}
 .intro__title{
     font-size: s.rem(24);
     letter-spacing: 0.06rem;
@@ -35,21 +42,38 @@
         left: 50%;
     }
 }
-.intro__text{
-    margin-bottom: 40px;
-}
 
 // ピックアップ
+.pickup__sec .u-wrapper{
+    @include s.mq(sm){
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 .p-top-pickup__list{
     margin-top: 40px;
 }
 .p-top-pickup__item{
     padding-left: 20px;
     padding-right: 20px;
+    @include s.mq(sm){
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+.p-top-pickup__title{
+    font-size: s.rem(18);
+    padding-bottom: 8px;
+}
+.p-top-pickup__thumbnail{
+    margin-bottom: 16px;
+}
+.p-top-pickup__text{
+    font-family: s.$sans;
 }
 // スリックのドットスタイル
 .slick-dots{
-    bottom: -50px;
+    bottom: -70px;
     li{
         width: 10px;
         button::before{
@@ -60,6 +84,9 @@
         color: s.$colorGold;
     }
 }
+.slick-dotted.slick-slider{
+    margin-bottom: 70px;
+}
 
 // プラン
 .c-plan-tabs{
@@ -69,6 +96,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .c-plan-tabs__button{
     min-width: 280px;
@@ -78,6 +107,11 @@
     border-bottom: 1px solid s.$colorGray;
     padding-bottom: 8px;
     font-size: s.rem(18);
+    @include s.mq(sm){
+        font-size: s.rem(14);
+        min-width: unset;
+        width: 30%;
+    }
 }
 .c-plan-tabs__button--active{
     color: s.$colorGold;
@@ -93,6 +127,7 @@
     border-bottom: 1px solid s.$colorGold;
     padding-bottom: 8px;
     font-size: s.rem(20);
+    text-align: center;
     }
     .content__text{
         font-family: s.$sans;
@@ -102,6 +137,17 @@
 
 .c-plan-tabs__content--active{
     display: block;
+    animation: fade-in 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .plan__cta{
@@ -113,13 +159,22 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
+    @include s.mq(sm){
+    width: 100%;
+}
 }
 
 // 特徴
+.feature__sec{
+    height: auto;
+}
 .p-top__featureList{
     margin-top: 40px;
     .p-top__featureItem:nth-child(even){
         flex-direction: row-reverse;
+        @include s.mq(sm){
+            flex-direction: column;
+        }
     }
     .p-top__featureItem:last-child{
        margin-bottom: 0;
@@ -128,9 +183,16 @@
 .p-top__featureItem{
     display: flex;
     margin-bottom: 100px;
+    @include s.mq(sm){
+       flex-direction: column;
+       margin-bottom: 40px;
+    }
 }
 .featureItem__imgWrapper{
     width: 500px;
+    @include s.mq(sm){
+       width: 100%;
+    }
 }
 .featureItem__contents{
     margin-top: 130px;
@@ -143,6 +205,13 @@
     flex-direction: column;
     justify-content: center;
     z-index: 5;
+    @include s.mq(sm){
+       margin-left: 0;
+       margin-top: 0;
+       min-height: auto;
+       padding: 24px 16px;
+       width: 100%;
+    }
 }
 .featureItem__title{
     text-align: center;
@@ -150,8 +219,12 @@
     margin-bottom: 16px;
 }
 .p-top__featureItem:nth-child(even) .featureItem__contents {
-  margin-left: auto; /* 奇数番目のmargin-leftをリセット */
+  margin-left: auto;
   margin-right: -80px;
+  @include s.mq(sm){
+       margin-right: 0;
+       margin-left: 0;
+    }
 }
 
 // お問い合わせセクション
@@ -163,12 +236,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include s.mq(sm){
+       flex-direction: column;
+       text-align: center;
+       background: url("../images/contact-cta-sp.jpg") no-repeat center;
+       background-size: cover;
+       min-height: 330px;
+       padding: 40px;
+    }
 }
 .contact__titleEn{
-    font-size: s.rem(20);
+    font-size: s.rem(24);
+    letter-spacing: 0.1rem;
+}
+.contact__text{
+    line-height: 1.8;
 }
 .contact__cta{
-
+    @include s.mq(sm){
+     width: 100%;
+    }
 }
 .contact__ctaLink{
     padding: 16px;
@@ -178,6 +265,9 @@
     display: flex;
     justify-content: center;
     font-size: s.rem(20);
+    @include s.mq(sm){
+       width: 100%;
+    }
 }
 .contact__sns{
     display: flex;
@@ -186,9 +276,19 @@
     margin-top: 2%;
     .sns:first-child{
         background: url("../images/instagram-cta.jpg") no-repeat center;
+        background-size: cover;
     }
     .sns:last-child{
         background: url("../images/facebook-cta.jpg") no-repeat center;
+        background-size: cover;
+       
+        @include s.mq(sm){
+         margin-top: 5%;
+    }
+    }
+    @include s.mq(sm){
+        flex-direction: column;
+        margin-top: 5%;
     }
 }
 .sns{
@@ -199,19 +299,60 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include s.mq(sm){
+        width: 100%;
+        height: 200px;
+        min-height: unset;
+    }
 }
 .sns__text{
     font-size: s.rem(24);
+    letter-spacing: 0.15rem;
+}
+.sns__imgWrapper{
+    width: 40px;
+    height: 40px;
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .footer__navArea{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
+    @include s.mq(sm){
+        margin-bottom: 24px;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.footer__navList{
+    @include s.mq(xs){
+        flex-direction: column;
+        gap: 16px;
+    }
 }
 .footer__logo{
     font-size: s.rem(24);
     letter-spacing: 0.08rem;
+    @include s.mq(sm){
+        margin-bottom: 24px;
+    }
 }
 .footer__navItem{
     padding-left: 24px;
+    @include s.mq(xs){
+        padding-left: 0;
+    }
+}
+
+.copiright{
+    margin-bottom: 14px;
+    text-align: center;
+    margin-top: 30px;
+     @include s.mq(sm){
+        margin-bottom: 24px;
+    }
 }
